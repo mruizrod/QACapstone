@@ -2,6 +2,7 @@ from loguru import logger
 import nest_asyncio; nest_asyncio.apply()
 from dotenv import load_dotenv; load_dotenv()
 import numpy as np
+
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import SimpleDirectoryReader
 from llama_parse import LlamaParse

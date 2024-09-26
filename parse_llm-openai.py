@@ -2,6 +2,7 @@ import os
 from loguru import logger
 import nest_asyncio; nest_asyncio.apply()
 from dotenv import load_dotenv; load_dotenv()
+
 from llama_parse import LlamaParse
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 
