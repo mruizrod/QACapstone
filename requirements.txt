@@ -8,3 +8,7 @@ llama-index-embeddings-ollama
 llama_index-llms-ollama
 python-dotenv
 llama-index-llms-groq
+scikit-learn
+numpy
+PyPDF2
+pycryptodome
