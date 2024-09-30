@@ -1,0 +1,31 @@
+Question,model,similarity_response_question,similarity_response_answer
+How much has Norway's policy rate changed over the past year?,llama2,0.8605537089056815,0.607631048251414
+How much has Norway's policy rate changed over the past year?,nlp_base,0.6823123446043314,0.5958138257354396
+Is the shift to higher interest rates posing challenges to bond issuers?,llama2,0.8808736612388776,0.8998230435298581
+Is the shift to higher interest rates posing challenges to bond issuers?,nlp_base,0.754041267495169,0.8600707764140252
+Can small caps finally outperform?,llama2,0.7961157957976044,0.8530544215948316
+Can small caps finally outperform?,nlp_base,0.6687562285381955,0.7969956566115537
+What is “normal” for private equity?,llama2,0.8476034833094278,0.8763511832959774
+What is “normal” for private equity?,nlp_base,0.7553751540118328,0.792822600079158
+What is the key takeaway of Goldman's mid-year outlook 2024?,llama2,0.8307801278209672,0.7128994292346997
+What is the key takeaway of Goldman's mid-year outlook 2024?,nlp_base,0.7618472425885743,0.7711088839858281
+Are investment theses predicated on the continuation of existing policies?,llama2,0.8487911490289418,0.8149792051922189
+Are investment theses predicated on the continuation of existing policies?,nlp_base,0.7288654838806163,0.7842940976828752
+What might the US election mean for the Inflation Reduction Act?,llama2,0.8176827752454937,0.8823073021725735
+What might the US election mean for the Inflation Reduction Act?,nlp_base,0.7274939235108537,0.8831638090951784
+How should investors think about healthcare in an election year?,llama2,0.8276717467432497,0.9243534844429565
+How should investors think about healthcare in an election year?,nlp_base,0.7848099438822601,0.8373259218073968
+What are the potential market implications of rising sovereign debt levels?,llama2,0.9151934495428599,0.884454572672188
+What are the potential market implications of rising sovereign debt levels?,nlp_base,0.7862338159238934,0.7907601913770916
+How will AI shape real estate and infrastructure?,llama2,0.8571548921257104,0.9325737800776228
+How will AI shape real estate and infrastructure?,nlp_base,0.7931481594261938,0.8385325708487029
+What opportunities are emerging at the intersection of AI and sustainability?,llama2,0.838666218583124,0.8504158813057863
+What opportunities are emerging at the intersection of AI and sustainability?,nlp_base,0.7166241747802345,0.8641034778611608
+What events were attributed to spikes in the Geopolitical Risk Index since 2008?,llama2,0.908404062659692,0.7979733157023122
+What events were attributed to spikes in the Geopolitical Risk Index since 2008?,nlp_base,0.7659887945090131,0.6778172340665859
+What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,llama2,0.8853083149923542,0.7513481013952705
+What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,nlp_base,0.836312117688151,0.7275785436637471
+What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,llama2,0.8394644914583193,0.7695836620540393
+What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,nlp_base,0.7450689381519762,0.7507620741162881
+What happened in the first six months of 2024 globally in terms of politics?,llama2,0.8081087501047758,0.8746151283348904
+What happened in the first six months of 2024 globally in terms of politics?,nlp_base,0.6828833485532112,0.8129457767927161

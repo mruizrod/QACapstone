@@ -21,7 +21,10 @@ class NLP_base(object):
         if self.verbose: logger.info("Parsing documents...")
         self.documents = SimpleDirectoryReader(
             input_dir=input_dir, input_files=input_files,
-            file_extractor={".pdf": LlamaParse(result_type="markdown")},
+            file_extractor={".pdf": LlamaParse(
+                result_type="markdown",
+                verbose=self.verbose,
+            )},
         ).load_data()
 
     def train(self):
