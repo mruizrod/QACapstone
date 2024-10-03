@@ -1,61 +1,61 @@
-Question,model,similarity_response_question,similarity_response_answer
-Are investment theses predicated on the continuation of existing policies?,llama2,0.8519489371765232,0.8453368803964784
-Are investment theses predicated on the continuation of existing policies?,nlp_base,0.7288654838806163,0.7842940976828752
-Are investment theses predicated on the continuation of existing policies?,nlp_langchain,0.7715487688182732,0.8462408846312108
-Are investment theses predicated on the continuation of existing policies?,openai,0.8878487469144805,0.9310107721074783
-Can small caps finally outperform?,llama2,0.7928529840771551,0.8590050047953669
-Can small caps finally outperform?,nlp_base,0.6687562285381955,0.7969956566115537
-Can small caps finally outperform?,nlp_langchain,0.9870486428506329,0.9328138498077401
-Can small caps finally outperform?,openai,0.8700862851536924,0.9822733157321981
-How much has Norway's policy rate changed over the past year?,llama2,0.8512712922078635,0.6028165072673625
-How much has Norway's policy rate changed over the past year?,nlp_base,0.6823123446043314,0.5958138257354396
-How much has Norway's policy rate changed over the past year?,nlp_langchain,0.6671529949983821,0.5875277323835589
-How much has Norway's policy rate changed over the past year?,openai,0.9109613181483031,0.7448886286178925
-How should investors think about healthcare in an election year?,llama2,0.8272901848116783,0.9403575484416283
-How should investors think about healthcare in an election year?,nlp_base,0.7848099438822601,0.8373259218073968
-How should investors think about healthcare in an election year?,nlp_langchain,0.9860923921838273,0.9285622836998277
-How should investors think about healthcare in an election year?,openai,0.8925183333230958,0.9683488012296729
-How will AI shape real estate and infrastructure?,llama2,0.845418658169409,0.923321251000236
-How will AI shape real estate and infrastructure?,nlp_base,0.7931481594261938,0.8385325708487029
-How will AI shape real estate and infrastructure?,nlp_langchain,0.992095919734161,0.9545059060906654
-How will AI shape real estate and infrastructure?,openai,0.9039085107803271,1.0
-Is the shift to higher interest rates posing challenges to bond issuers?,llama2,0.8848304712422885,0.8955935249611902
-Is the shift to higher interest rates posing challenges to bond issuers?,nlp_base,0.754041267495169,0.8600707764140252
-Is the shift to higher interest rates posing challenges to bond issuers?,nlp_langchain,0.8622928701252641,0.9239830674777701
-Is the shift to higher interest rates posing challenges to bond issuers?,openai,0.9422321429845517,0.8843943973396857
-What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,llama2,0.8842307774329965,0.7496775191740667
-What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,nlp_base,0.836312117688151,0.7275785436637471
-What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,nlp_langchain,0.8511858514593331,0.7150654639943352
-What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,openai,0.9316719714471395,0.9390564483569378
-What are the potential market implications of rising sovereign debt levels?,llama2,0.9196230637988576,0.8837854246763582
-What are the potential market implications of rising sovereign debt levels?,nlp_base,0.7862338159238934,0.7907601913770916
-What are the potential market implications of rising sovereign debt levels?,nlp_langchain,0.8495523028846899,0.842767797010554
-What are the potential market implications of rising sovereign debt levels?,openai,0.9050576432757291,0.9741191175468881
-What events were attributed to spikes in the Geopolitical Risk Index since 2008?,llama2,0.9155178659358688,0.7862073026356869
-What events were attributed to spikes in the Geopolitical Risk Index since 2008?,nlp_base,0.7659887945090131,0.6778172340665859
-What events were attributed to spikes in the Geopolitical Risk Index since 2008?,nlp_langchain,0.7937045211629805,0.6437006204518301
-What events were attributed to spikes in the Geopolitical Risk Index since 2008?,openai,0.8623316478580213,0.9147632915061072
-What happened in the first six months of 2024 globally in terms of politics?,llama2,0.8092487490629843,0.8695626805673566
-What happened in the first six months of 2024 globally in terms of politics?,nlp_base,0.6828833485532112,0.8129457767927161
-What happened in the first six months of 2024 globally in terms of politics?,nlp_langchain,0.7158103626739634,0.7520618207115337
-What happened in the first six months of 2024 globally in terms of politics?,openai,0.899247261978257,0.9379493736903572
-What is the key takeaway of Goldman's mid-year outlook 2024?,llama2,0.8376404884403247,0.7409740623214589
-What is the key takeaway of Goldman's mid-year outlook 2024?,nlp_base,0.7618472425885743,0.7711088839858281
-What is the key takeaway of Goldman's mid-year outlook 2024?,nlp_langchain,0.8519643187556369,0.7618701607436016
-What is the key takeaway of Goldman's mid-year outlook 2024?,openai,0.9327111417522522,0.8581984915061532
-What is “normal” for private equity?,llama2,0.8345901600441353,0.8705418265390736
-What is “normal” for private equity?,nlp_base,0.7553751540118328,0.792822600079158
-What is “normal” for private equity?,nlp_langchain,0.9774259398731345,0.9541240579726791
-What is “normal” for private equity?,openai,0.8977533335435028,0.9779538603772299
-What might the US election mean for the Inflation Reduction Act?,llama2,0.8230111356760382,0.8918600270319542
-What might the US election mean for the Inflation Reduction Act?,nlp_base,0.7274939235108537,0.8831638090951784
-What might the US election mean for the Inflation Reduction Act?,nlp_langchain,0.9850660751811103,0.9481270069729518
-What might the US election mean for the Inflation Reduction Act?,openai,0.8781817720369911,0.991914119082397
-What opportunities are emerging at the intersection of AI and sustainability?,llama2,0.8404619494886791,0.8539208655731697
-What opportunities are emerging at the intersection of AI and sustainability?,nlp_base,0.7166241747802345,0.8641034778611608
-What opportunities are emerging at the intersection of AI and sustainability?,nlp_langchain,0.9880869019990912,0.9249443374724787
-What opportunities are emerging at the intersection of AI and sustainability?,openai,0.9310670808474295,0.970826315138716
-What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,llama2,0.8349253372751304,0.7739573092380759
-What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,nlp_base,0.7450689381519762,0.7507620741162881
-What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,nlp_langchain,0.775806062100461,0.760257713211576
-What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,openai,0.9316055583116001,0.9057316930890422
+Question,similarity_response_question,similarity_response_answer,model
+Are investment theses predicated on the continuation of existing policies?,0.8498104398912343,0.8185860744633644,llama2
+Are investment theses predicated on the continuation of existing policies?,0.7288654838806163,0.7842940976828752,nlp_base
+Are investment theses predicated on the continuation of existing policies?,0.7715487688182732,0.8462408846312108,nlp_langchain
+Are investment theses predicated on the continuation of existing policies?,0.8705234768690463,0.9274545386635025,openai
+Can small caps finally outperform?,0.7825296334060268,0.8822299455959548,llama2
+Can small caps finally outperform?,0.6687562285381955,0.7969956566115537,nlp_base
+Can small caps finally outperform?,0.9870486428506329,0.9328138498077401,nlp_langchain
+Can small caps finally outperform?,0.8697033458491372,0.9826011023121435,openai
+How much has Norway's policy rate changed over the past year?,0.8864589664498983,0.6066939896500428,llama2
+How much has Norway's policy rate changed over the past year?,0.6823123446043314,0.5958138257354396,nlp_base
+How much has Norway's policy rate changed over the past year?,0.6671529949983821,0.5875277323835589,nlp_langchain
+How much has Norway's policy rate changed over the past year?,0.9109613181483031,0.7448886286178925,openai
+How should investors think about healthcare in an election year?,0.8476279064857328,0.935475533161824,llama2
+How should investors think about healthcare in an election year?,0.7848099438822601,0.8373259218073968,nlp_base
+How should investors think about healthcare in an election year?,0.9860923921838273,0.9285622836998277,nlp_langchain
+How should investors think about healthcare in an election year?,0.8943647431444891,0.9718003696625066,openai
+How will AI shape real estate and infrastructure?,0.86630339728794,0.9192624782748352,llama2
+How will AI shape real estate and infrastructure?,0.7931481594261938,0.8385325708487029,nlp_base
+How will AI shape real estate and infrastructure?,0.992095919734161,0.9545059060906654,nlp_langchain
+How will AI shape real estate and infrastructure?,0.903904635135121,1.0,openai
+Is the shift to higher interest rates posing challenges to bond issuers?,0.8801776547195488,0.8968962651470553,llama2
+Is the shift to higher interest rates posing challenges to bond issuers?,0.754041267495169,0.8600707764140252,nlp_base
+Is the shift to higher interest rates posing challenges to bond issuers?,0.8622928701252641,0.9239830674777701,nlp_langchain
+Is the shift to higher interest rates posing challenges to bond issuers?,0.9422321429845517,0.8844022898831545,openai
+What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,0.8912379983068213,0.7571887369795334,llama2
+What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,0.836312117688151,0.7275785436637471,nlp_base
+What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,0.8511858514593331,0.7150654639943352,nlp_langchain
+What are current levels of US debt held by the Public as % of GDP and what are Goldman Sach's forecast in the near future?,0.932839864657609,0.9397056530790767,openai
+What are the potential market implications of rising sovereign debt levels?,0.9093745750350639,0.8917605848957468,llama2
+What are the potential market implications of rising sovereign debt levels?,0.7862338159238934,0.7907601913770916,nlp_base
+What are the potential market implications of rising sovereign debt levels?,0.8495523028846899,0.842767797010554,nlp_langchain
+What are the potential market implications of rising sovereign debt levels?,0.9050584411202804,0.9741191175468881,openai
+What events were attributed to spikes in the Geopolitical Risk Index since 2008?,0.8978757835648501,0.7867032316343652,llama2
+What events were attributed to spikes in the Geopolitical Risk Index since 2008?,0.7659887945090131,0.6778172340665859,nlp_base
+What events were attributed to spikes in the Geopolitical Risk Index since 2008?,0.7937045211629805,0.6437006204518301,nlp_langchain
+What events were attributed to spikes in the Geopolitical Risk Index since 2008?,0.8434576945963379,0.9204488036547825,openai
+What happened in the first six months of 2024 globally in terms of politics?,0.8085102269378085,0.8732743048904508,llama2
+What happened in the first six months of 2024 globally in terms of politics?,0.6828833485532112,0.8129457767927161,nlp_base
+What happened in the first six months of 2024 globally in terms of politics?,0.7158103626739634,0.7520618207115337,nlp_langchain
+What happened in the first six months of 2024 globally in terms of politics?,0.8946740742690787,0.9378577796823709,openai
+What is the key takeaway of Goldman's mid-year outlook 2024?,0.8311982556631285,0.7483873328750261,llama2
+What is the key takeaway of Goldman's mid-year outlook 2024?,0.7618472425885743,0.7711088839858281,nlp_base
+What is the key takeaway of Goldman's mid-year outlook 2024?,0.8519643187556369,0.7618701607436016,nlp_langchain
+What is the key takeaway of Goldman's mid-year outlook 2024?,0.933099823920964,0.8581320072129432,openai
+What is “normal” for private equity?,0.8277274112260719,0.8810715395462813,llama2
+What is “normal” for private equity?,0.7553751540118328,0.792822600079158,nlp_base
+What is “normal” for private equity?,0.9774259398731345,0.9541240579726791,nlp_langchain
+What is “normal” for private equity?,0.900313484142026,0.9654166258453353,openai
+What might the US election mean for the Inflation Reduction Act?,0.813613880045389,0.8908525668894105,llama2
+What might the US election mean for the Inflation Reduction Act?,0.7274939235108537,0.8831638090951784,nlp_base
+What might the US election mean for the Inflation Reduction Act?,0.9850660751811103,0.9481270069729518,nlp_langchain
+What might the US election mean for the Inflation Reduction Act?,0.875024182620133,0.999390890678636,openai
+What opportunities are emerging at the intersection of AI and sustainability?,0.8253440483337803,0.8515501207839236,llama2
+What opportunities are emerging at the intersection of AI and sustainability?,0.7166241747802345,0.8641034778611608,nlp_base
+What opportunities are emerging at the intersection of AI and sustainability?,0.9880869019990912,0.9249443374724787,nlp_langchain
+What opportunities are emerging at the intersection of AI and sustainability?,0.9313936825484177,0.9706128064996505,openai
+What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,0.8466223531342324,0.7774445295439392,llama2
+What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,0.7450689381519762,0.7507620741162881,nlp_base
+What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,0.775806062100461,0.760257713211576,nlp_langchain
+What was the lowest level of US debt held by the Public as % of GDP and in what year was this achieved?,0.9311479117799643,0.9055442956150974,openai
