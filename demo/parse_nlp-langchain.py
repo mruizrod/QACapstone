@@ -8,7 +8,7 @@ from llama_index.core import SimpleDirectoryReader
 from llama_parse import LlamaParse
 from sklearn.metrics.pairwise import cosine_similarity
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-
+import ingest
 
 def search(query, doc_embeddings, docs, n_context=2):
     query_embedding = embed_model._embed(query)
@@ -24,10 +24,13 @@ def search(query, doc_embeddings, docs, n_context=2):
 
 #! check point 1
 logger.info(f"Parsing documents...")
-documents = SimpleDirectoryReader(
-    input_dir="../data/pdf",
-    file_extractor={".pdf": LlamaParse(result_type="markdown")},
-).load_data()
+# documents = SimpleDirectoryReader(
+#     input_dir="../data/pdf",
+#     file_extractor={".pdf": LlamaParse(result_type="markdown")},
+# ).load_data()
+
+documents = ingest.process_data('unstructured')
+
 text_splitter = RecursiveCharacterTextSplitter(
     separators=["\n\n"],
     chunk_size=200,  #TODO: tune

@@ -10,8 +10,8 @@ load_dotenv()
 from llama_parse import LlamaParse
 import pdfplumber
 from langchain_community.document_loaders import PyPDFLoader
-
-
+from unstructured.chunking.title import chunk_by_title
+from langchain_community.document_loaders import UnstructuredPDFLoader
 
 class PDFParser(object):
     def __init__(self, api_key=None):
@@ -20,7 +20,8 @@ class PDFParser(object):
     def extract_unstructured(self, file_path):
         from unstructured.partition.pdf import partition_pdf
         elements = partition_pdf(file_path, strategy='hi_res')
-        return "\n\n".join([str(element) for element in elements])
+        #chunks = chunk_by_title(elements)
+        return elements
     
     def extract_pdfplumber(self, file_path):
         with pdfplumber.open(file_path) as pdf:
@@ -37,6 +38,11 @@ class PDFParser(object):
         parser = LlamaParse(api_key=self.api_key, result_type="markdown")
         return parser.load_data(file_path)
     
+    def extract_unstructuredLangchain(self,file_path):
+        loader = UnstructuredPDFLoader(file_path)
+        elements = loader.load()
+        return elements
+    
     def load_data(self, file_path, method):
 
         if method == 'pdfplumber':
@@ -47,6 +53,8 @@ class PDFParser(object):
             return self.extract_llamaparse(file_path)
         elif method == 'unstructured':
             return self.extract_unstructured(file_path)
+        elif method == 'unstructuredLangchain':
+            return self.extract_unstructuredLangchain(file_path)
         else:
             raise ValueError(f"Unknown parsing method: {method}")
 
