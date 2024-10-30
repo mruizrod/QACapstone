@@ -1,31 +1,26 @@
+import os; os.environ["TOKENIZERS_PARALLELISM"] = "true"
 from loguru import logger
 import nest_asyncio; nest_asyncio.apply()
 from dotenv import load_dotenv; load_dotenv()
 
 from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
-from llama_parse import LlamaParse
+from llama_index.core import VectorStoreIndex, Settings
 from sklearn.metrics.pairwise import cosine_similarity
+
+from utils import process_data
 
 
 class Llama2(object):
     def __init__(
         self, 
-        input_dir=None, 
-        input_files=None, 
+        parser=None,
+        data_path=None,
         verbose=True,
     ):
         self.verbose = verbose
-
-        if self.verbose: logger.info("Parsing documents...")
-        self.documents = SimpleDirectoryReader(
-            input_dir=input_dir, input_files=input_files,
-            file_extractor={".pdf": LlamaParse(
-                result_type="markdown",
-                verbose=self.verbose,
-            )},
-        ).load_data()
+        if self.verbose: logger.info("Loading/Parsing documents...")
+        self.documents = process_data(data_path=data_path, method=parser)
 
     def train(self):
         if self.verbose: logger.info("Initializing Llamma-index with Llama2...")
@@ -34,6 +29,9 @@ class Llama2(object):
         Settings.llm, Settings.embed_model = self.llm, self.embed_model
         index = VectorStoreIndex.from_documents(self.documents)
         self.query_engine = index.as_query_engine()
+
+    def embed(self, query):
+        return self.embed_model._embed(query)
 
     def answer(self, query):
         if self.verbose: logger.info("Generating response...")
@@ -46,7 +44,7 @@ class Llama2(object):
     
 
 if __name__ == "__main__":
-    llama2 = Llama2(input_dir="../data/pdf")
+    llama2 = Llama2(data_path="../data", parser="unstructured")
     llama2.train()
     
     question = "What is the key takeaway of Goldman's mid-year outlook 2024?"

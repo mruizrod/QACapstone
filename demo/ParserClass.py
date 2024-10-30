@@ -60,6 +60,6 @@ class PDFParser(object):
 
 
 if __name__ == '__main__':
-    input_dir = r"C:\Users\maryj\Documents\Mini5CMU\llamaparser-example\data\pdf\am-mid-year-outlook-2024.pdf"
+    input_dir = "./data/pdf/am-mid-year-outlook-2024.pdf"
     parser = PDFParser()
-    data = parser.load_data(input_dir, method = 'unstructured')
+    data = parser.load_data(input_dir, method = 'llamaparse')

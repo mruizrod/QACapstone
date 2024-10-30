@@ -87,5 +87,5 @@ def process_data(method):
 
 
 if __name__ == '__main__':
-    docs = load_parse_data(method = 'unstructured')
-    print(docs)
+    documents, files = load_parse_data(method = 'llamaparse')
+    print(files, documents.keys())
