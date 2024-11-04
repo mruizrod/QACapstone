@@ -10,7 +10,7 @@ from src.pipeline import Pipeline
 
 questions = pd.read_csv("../data/testQ.csv")
 models = ["llama2", "nlp_base", "nlp_langchain"]
-parsers = ["llamaparse", "pdfplumber", "pypdfloader"]
+parsers = ["unstructured", "llamaparse", "pdfplumber", "pypdfloader"]
 
 result = pd.DataFrame()
 for model in models:
