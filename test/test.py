@@ -1,12 +1,6 @@
 import sys
-import os
-base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-
-sys.path.append(base_dir)  # Parent directory
-sys.path.append(os.path.join(base_dir, "src"))  # src directory
-data_path = os.path.join(base_dir, "data")
-
-
+sys.path.append("../")
+sys.path.append("../src")
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
@@ -14,19 +8,16 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from src.pipeline import Pipeline
 
-
-questions = pd.read_csv(os.path.join(base_dir, "data", "testQ.csv"))
-
-#questions = pd.read_csv("../data/testQ.csv")
-models = [ "nlp_base", "nlp_langchain","llama2",]
-parsers = ["unstructured","llamaparse", "pdfplumber", "pypdfloader"]
+questions = pd.read_csv("../data/testQ.csv")
+models = ["llama2", "nlp_base", "nlp_langchain"]
+parsers = ["unstructured", "llamaparse", "pdfplumber", "pypdfloader"]
 
 result = pd.DataFrame()
 for model in models:
     for parser in parsers:
         pipeline = Pipeline(
             parser=parser, model=model,
-            data_path=data_path, verbose=False,
+            data_path="../data", verbose=False,
         ); pipeline.train()
         sim_q_r, sim_a_r = [], []
         iterator = questions[["Question", "Answer"]].to_records(index=False)
@@ -48,4 +39,4 @@ for model in models:
         result = pd.concat([result, res])
 
 result.sort_values(["Question", "model", "parser"], inplace=True, ignore_index=True)
-result.to_csv(os.path.join(base_dir,"test_results.csv"), index=False)
+result.to_csv("./test_results.csv", index=False)
