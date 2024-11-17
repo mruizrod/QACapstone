@@ -15,7 +15,7 @@ from llama_index.core import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def load_parse_data(method):
-    data_file = './data/parsed_data_'+method+'.pkl'
+    data_file = '../data/pkl/'+method+'.pkl'
 
     if os.path.exists(data_file):
         with open(data_file, "rb") as f:
@@ -23,7 +23,7 @@ def load_parse_data(method):
     else:
         parsed_data = {}
     
-    folder_path = './data/pdf'
+    folder_path = '../data/pdf'
     document_files = [file for file in os.listdir(folder_path) if file.endswith('pdf')]
 
     parser = PDFParser()
