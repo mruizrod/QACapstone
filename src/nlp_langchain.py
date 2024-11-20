@@ -40,6 +40,7 @@ class NLP_langchain(object):
         return self.embed_model._embed(query)
 
     def answer(self, query, n_context=2):
+        if self.verbose: logger.info("Generating response...")
         query_embedding = self.embed_model._embed(query)
         similarities = cosine_similarity([query_embedding], self.document_embeddings).flatten()
         best_idx = np.argmax(similarities)
