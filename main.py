@@ -4,11 +4,7 @@ from src.pipeline import Pipeline
 import streamlit as st
 
 
-parser, model = "unstructured", "nlp_langchain"
-pipeline = Pipeline(
-    parser=parser, model=model,
-    data_path="./data", verbose=True,
-); pipeline.train()
+
 
 
 # question = "What is the anticipated rate at end-2024 according to the FED?"
@@ -18,8 +14,37 @@ pipeline = Pipeline(
 
 # Streamlit Interface
 st.title("Chatbot Interface with Pipeline")
+
+
+with st.sidebar:
+    st.title('Options')
+    selected_reader = st.sidebar.selectbox('Choose the PDF Reader', ['unstructured', 'PDF Loader','PDF Plumber'], key='selected_reader')
+    if selected_reader == 'unstructured':
+        parser = 'unstructured'
+    elif selected_reader == 'PDF Loader':
+        parser = 'pypdfloader'
+    elif selected_reader == 'PDF PLumber':
+        parser = 'pdfplumber'
+    st.markdown(
+        'We recommend using the reader unstructured for specific questions and PDF Loader for general questions')
+
+    selected_model = st.sidebar.selectbox('Choose the Model', ['LLM', 'Text Extractor'], key='selected_model')
+    if selected_model == 'LLM':
+        model= 'llama2'
+
+    elif selected_model == 'Text Extractor':
+        model = 'nlp_langchain'
+    st.markdown(
+        'We recommend using the LLM model unless you want to only extract a portion of the text')
+
+
+pipeline = Pipeline(
+    parser=parser, model=model,
+    data_path=r'C:\Users\maryj\Documents\Mini5CMU\llamaparser-example\data', verbose=True,
+); pipeline.train()
+
 # Store chat history
-if "history" not in st.session_state:
+if "history" not in st.session_state.keys():
     st.session_state.history = []
 # User input
 user_input = st.text_input("You:", placeholder="Ask me a question...")
