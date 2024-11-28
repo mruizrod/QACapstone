@@ -16,10 +16,10 @@ with st.sidebar:
     st.title("Pipeline Configuration")
     selected_reader = st.sidebar.selectbox(
         "Choose the PDF Reader", 
-        ["unstructured", "PDF Loader","PDF Plumber"], 
+        ["Unstructured", "PDF Loader","PDF Plumber"], 
         key="selected_reader",
     )
-    if selected_reader == "unstructured": parser = "unstructured"
+    if selected_reader == "Unstructured": parser = "unstructured"
     elif selected_reader == "PDF Loader": parser = "pypdfloader"
     elif selected_reader == "PDF PLumber": parser = "pdfplumber"
     st.markdown("We recommend using the reader unstructured for specific questions and PDF Loader for general questions")
@@ -35,7 +35,7 @@ with st.sidebar:
 
 pipeline = get_pipeline(parser, model)
 
-st.title("Chatbot Interface with Pipeline")
+st.title("Chatbot for Financial Reports")
 if "history" not in st.session_state:
     st.session_state.history = []
 user_input = st.text_input("You:", placeholder="Ask me a question...")
