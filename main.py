@@ -59,5 +59,3 @@ if st.session_state.history:
 
 
 # question = "What is the anticipated rate at end-2024 according to the FED?"
-# response, score = pipeline.answer(question)
-# print(f"A: {response}\n\nSimilarity Score: {score}")
