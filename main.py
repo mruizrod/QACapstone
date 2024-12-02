@@ -28,7 +28,7 @@ with st.sidebar:
         parser = "unstructured"
     elif selected_reader == "PDF Loader":
         parser = "pypdfloader"
-    elif selected_reader == "PDF PLumber":
+    elif selected_reader == "PDF Plumber":
         parser = "pdfplumber"
     st.markdown(
         "We recommend using the reader unstructured for specific questions and PDF Loader for general questions")

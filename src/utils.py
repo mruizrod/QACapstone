@@ -115,49 +115,53 @@ class PDFParser(object):
 def guide(x):
     return f"""
         Objective:
-        I will provide you with a task or description. Your job is to output a single, well-structured, actionable prompt that effectively guides another LLMto perform the task.
+        I will provide you with a task or description. Your job is to create a single, well-structured, actionable prompt that effectively guides another LLM to perform the task.
 
         Guidelines:
+        1. Direct Prompt Creation:
+            • Do not include explanations or steps about how you engineered the prompt—just provide the final prompt.
+        2. Include Relevant Context:
+            • If the task seems to rely on information from a document or dataset, assume the LLM has access to that data.
+            • Make sure the engineered prompt explicitly refers to that document or dataset to guide the real LLM effectively.
+        3. Clear and Specific Instructions:
+            • Ensure the prompt is concise, grammatically correct, and avoids ambiguity.
+            • Specify the desired format, tone, or any constraints.
+        4. Iterative Refinement:
+            • If a single prompt isn’t sufficient, suggest breaking the task into subtasks within the same prompt.
 
-            1.	Direct Prompt Creation:
-            •	Do not include explanations or steps about how you engineered the prompt—just provide the final prompt.
-            2.	Include Relevant Context:
-            •	If the task seems to rely on information from a document or dataset, assume the LLM has access to that data.
-            •	Make sure the engineered prompt explicitly refers to that document or dataset to guide the real LLM effectively.
-            3.	Clear and Specific Instructions:
-            •	Ensure the prompt is concise, grammatically correct, and avoids ambiguity.
-            •	Specify the desired format, tone, or any constraints.
-            4.	Iterative Refinement:
-            •	If a single prompt isn't sufficient, suggest breaking the task into subtasks within the same prompt.
+        When given this prompt, first determine whether it is a general question like "summarize this report" or it is a specific, context-based question like "what is the total increase in EPS this quarter?"
+
+        If it is a general question, then you should give me back a prompt that explicitly give context to the general question. For example, change from "summarize this report" to "summarize this report in a structured way, reference relevant sections and figures in the report."
+        If it is a specific question asking for contextual information from the text, then you should give me back a prompt that mentions the fact that they are asking for specific information, and append this at the end: "If you cannot find matching context to this question, say you cannot find matching detail and give the most relevant detail you can find. If you can find matching context to this question, answer the question succinctly and say where you find the information in the report/text"
 
         Examples
 
-        Input:
+        Input: (general)
 
-        “Summarize a financial report and identify key trends.”
+        “What is the gist of this report.”
 
         Engineered Prompt:
 
-        “Using the financial report provided, summarize the key trends in revenue, expenses, and profit margins over the past quarter. Highlight any significant changes or patterns in the data. Present your response in a professional tone and limit it to 3-5 sentences.”
+        “Summarize the report in a well-structured way and reference details and figures in the report.”
 
-        Input:
+        Input: (general)
 
         “Analyze customer reviews for sentiment.”
 
         Engineered Prompt:
 
-        “Analyze the customer reviews provided and classify the sentiment as positive, negative, or neutral. Provide a one-sentence explanation for each classification, citing specific phrases from the reviews.”
+        “Analyze the customer reviews provided and classify the sentiment as positive, negative, or neutral.”
 
-        Input:
+        Input: (specific)
 
-        “Generate a Python function to calculate portfolio variance.”
+        “What is the Fed's predicted issuance of 5-yr bond?”
 
         Engineered Prompt:
 
-        “Write a Python function that calculates the variance of a portfolio given a list of asset weights and their covariance matrix. Include detailed inline comments explaining each step of the function.”
+        “Find the Fed's predicted issuance of 5-year bond. Try to find exact matching details. If you cannot find matching context to this question, say you cannot find matching detail and give the most relevant detail you can find. If you can find matching context to this question, answer the question succinctly and say where you find the information in the report/text”
 
         Final Instructions:
-        When I give you a task, respond only with the final engineered prompt. If the task seems to depend on specific documents or datasets, explicitly reference them in the prompt to guide the LLM (the real one) effectively. Do not include any explanations or additional steps—just the prompt.
+        When I give you a task, respond only with the final engineered prompt. Do not include any explanations or additional steps—just the prompt.
 
 
         <Prompt: {x}>
