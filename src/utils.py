@@ -1,15 +1,16 @@
+from langchain_community.document_loaders import UnstructuredPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from unstructured.chunking.title import chunk_by_title
+from llama_index.core import Document
+from llama_parse import LlamaParse
+import pdfplumber
+from dotenv import load_dotenv
 import os
 import pickle
-import nest_asyncio; nest_asyncio.apply()
-from dotenv import load_dotenv; load_dotenv()
-
-import pdfplumber
-from llama_parse import LlamaParse
-from llama_index.core import Document
-from unstructured.chunking.title import chunk_by_title
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.document_loaders import UnstructuredPDFLoader
+import nest_asyncio
+nest_asyncio.apply()
+load_dotenv()
 
 
 def process_data(data_path, method):
@@ -19,9 +20,11 @@ def process_data(data_path, method):
         for docs in data_dict.values():
             for doc in docs:
                 metadata = doc.metadata.to_dict()
-                split_documents.append(Document(text=doc.text, metadata=metadata))
+                split_documents.append(
+                    Document(text=doc.text, metadata=metadata))
     if method == 'pdfplumber':
-        splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+        splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000, chunk_overlap=100)
         for docs in data_dict.values():
             split_texts = splitter.split_text(docs)
             for split_text in split_texts:
@@ -30,7 +33,8 @@ def process_data(data_path, method):
         for docs in data_dict.values():
             for doc in docs:
                 metadata = doc.metadata
-                split_documents.append(Document(text=doc.page_content,metadata=metadata))
+                split_documents.append(
+                    Document(text=doc.page_content, metadata=metadata))
     if method == 'llamaparse':
         for docs in data_dict.values():
             for doc in docs:
@@ -48,7 +52,7 @@ def load_data(data_path, method):
     pdfs = [file for file in os.listdir(pdf_path) if file.endswith('pdf')]
     parser = PDFParser()
     for pdf_name in pdfs:
-        if pdf_name in parsed_data: 
+        if pdf_name in parsed_data:
             continue
         else:
             print(f"Parsing new document: {pdf_name}")
@@ -56,7 +60,7 @@ def load_data(data_path, method):
             document = parser.load_data(full_path, method)
             parsed_data[pdf_name] = document
     with open(data_file, 'wb') as f:
-        pickle.dump(parsed_data, f)  
+        pickle.dump(parsed_data, f)
     return parsed_data
 
 
@@ -64,6 +68,7 @@ class PDFParser(object):
     '''
     PDF parser for single pdf file
     '''
+
     def __init__(self, api_key=None):
         self.api_key = api_key or os.getenv("LLAMA_CLOUD_API_KEY")
 
@@ -106,3 +111,54 @@ class PDFParser(object):
             return self.extract_unstructuredLangchain(file_path)
         else:
             raise ValueError(f"Unknown parsing method: {method}")
+
+def guide(x):
+    return f"""
+        Objective:
+        I will provide you with a task or description. Your job is to output a single, well-structured, actionable prompt that effectively guides another LLMto perform the task.
+
+        Guidelines:
+
+            1.	Direct Prompt Creation:
+            •	Do not include explanations or steps about how you engineered the prompt—just provide the final prompt.
+            2.	Include Relevant Context:
+            •	If the task seems to rely on information from a document or dataset, assume the LLM has access to that data.
+            •	Make sure the engineered prompt explicitly refers to that document or dataset to guide the real LLM effectively.
+            3.	Clear and Specific Instructions:
+            •	Ensure the prompt is concise, grammatically correct, and avoids ambiguity.
+            •	Specify the desired format, tone, or any constraints.
+            4.	Iterative Refinement:
+            •	If a single prompt isn't sufficient, suggest breaking the task into subtasks within the same prompt.
+
+        Examples
+
+        Input:
+
+        “Summarize a financial report and identify key trends.”
+
+        Engineered Prompt:
+
+        “Using the financial report provided, summarize the key trends in revenue, expenses, and profit margins over the past quarter. Highlight any significant changes or patterns in the data. Present your response in a professional tone and limit it to 3-5 sentences.”
+
+        Input:
+
+        “Analyze customer reviews for sentiment.”
+
+        Engineered Prompt:
+
+        “Analyze the customer reviews provided and classify the sentiment as positive, negative, or neutral. Provide a one-sentence explanation for each classification, citing specific phrases from the reviews.”
+
+        Input:
+
+        “Generate a Python function to calculate portfolio variance.”
+
+        Engineered Prompt:
+
+        “Write a Python function that calculates the variance of a portfolio given a list of asset weights and their covariance matrix. Include detailed inline comments explaining each step of the function.”
+
+        Final Instructions:
+        When I give you a task, respond only with the final engineered prompt. If the task seems to depend on specific documents or datasets, explicitly reference them in the prompt to guide the LLM (the real one) effectively. Do not include any explanations or additional steps—just the prompt.
+
+
+        <Prompt: {x}>
+    """
