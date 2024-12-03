@@ -48,8 +48,8 @@ QACapstone.git is a project that streamlines document parsing and query response
     │   ├── open_ai.py
     │   ├── pipeline.py
     │   └── utils.py
-	├── test
-	│   └── ... (notebooks and results for experimental purposes)
+    ├── test
+    │   └── ... (notebooks and results for experimental purposes)
     ├── main.py
     └── requirements.txt
 ```
