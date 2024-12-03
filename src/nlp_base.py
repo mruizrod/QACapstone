@@ -43,4 +43,3 @@ class NLP_base(object):
         best_idx = np.argmax(similarities)
         response, score = self.documents[best_idx].text, similarities[best_idx]
         return response, score
-    

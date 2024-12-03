@@ -1,7 +1,6 @@
 from langchain_community.document_loaders import UnstructuredPDFLoader
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from unstructured.chunking.title import chunk_by_title
 from llama_index.core import Document
 from llama_parse import LlamaParse
 import pdfplumber
@@ -69,7 +68,8 @@ def load_data(data_path, method):
         with open(data_file, "rb") as f:
             parsed_data = pickle.load(f)
     pdf_path = data_path + "/pdf"
-    pdfs = [file for file in os.listdir(pdf_path) if file.endswith('pdf') and file not in parsed_data]
+    pdfs = [file for file in os.listdir(pdf_path) if file.endswith(
+        'pdf') and file not in parsed_data]
     if len(pdfs) > 0:
         parser = PDFParser()
         for pdf_name in pdfs:
@@ -95,28 +95,28 @@ class PDFParser(object):
         """
         self.api_key = api_key or os.getenv("LLAMA_CLOUD_API_KEY")
 
-    def extract_unstructured(self, file_path):
+    def _extract_unstructured(self, file_path):
         from unstructured.partition.pdf import partition_pdf
         elements = partition_pdf(file_path, strategy='hi_res')
         # chunks = chunk_by_title(elements)
         return elements
 
-    def extract_pdfplumber(self, file_path):
+    def _extract_pdfplumber(self, file_path):
         with pdfplumber.open(file_path) as pdf:
             extracted_data = ""
             for page in pdf.pages:
                 extracted_data += page.extract_text() + "\n\n"
         return extracted_data
 
-    def extract_pypdfloader(self, file_path):
+    def _extract_pypdfloader(self, file_path):
         loader = PyPDFLoader(file_path)
         return loader.load()
 
-    def extract_llamaparse(self, file_path):
+    def _extract_llamaparse(self, file_path):
         parser = LlamaParse(api_key=self.api_key, result_type="markdown")
         return parser.load_data(file_path)
 
-    def extract_unstructuredLangchain(self, file_path):
+    def _extract_unstructuredLangchain(self, file_path):
         loader = UnstructuredPDFLoader(file_path)
         elements = loader.load()
         return elements
@@ -136,17 +136,18 @@ class PDFParser(object):
             ValueError: If the provided method is not recognized.
         """
         if method == 'pdfplumber':
-            return self.extract_pdfplumber(file_path)
+            return self._extract_pdfplumber(file_path)
         elif method == 'pypdfloader':
-            return self.extract_pypdfloader(file_path)
+            return self._extract_pypdfloader(file_path)
         elif method == 'llamaparse':
-            return self.extract_llamaparse(file_path)
+            return self._extract_llamaparse(file_path)
         elif method == 'unstructured':
-            return self.extract_unstructured(file_path)
+            return self._extract_unstructured(file_path)
         elif method == 'unstructuredLangchain':
-            return self.extract_unstructuredLangchain(file_path)
+            return self._extract_unstructuredLangchain(file_path)
         else:
             raise ValueError(f"Unknown parsing method: {method}")
+
 
 def guide(user_input):
     '''Transform the raw user input to a guided input that contains clearer instructions for the model'''
