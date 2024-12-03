@@ -1,7 +1,7 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" align="center" width="30%">
+    <img src="https://www.svgrepo.com/show/375425/dialogflow-cx.svg" align="center" width="35%">
 </p>
-<p align="center"><h1 align="center">QACAPSTONE.GIT</h1></p>
+<p align="center"><h1 align="center">QA CAPSTONE</h1></p>
 <p align="center">
 	<em>Empowering insights through seamless document interactions.</em>
 </p>
@@ -34,7 +34,7 @@ QACapstone.git is a project that streamlines document parsing and query response
 
 ##  Project Structure
 
-```sh
+```
 └── QACapstone.git/
     ├── README.md
     ├── data
@@ -48,6 +48,8 @@ QACapstone.git is a project that streamlines document parsing and query response
     │   ├── open_ai.py
     │   ├── pipeline.py
     │   └── utils.py
+	├── test
+	│   └── ... (notebooks and results for experimental purposes)
     ├── main.py
     └── requirements.txt
 ```

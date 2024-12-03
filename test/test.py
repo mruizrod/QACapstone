@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from src.pipeline import Pipeline
 
-questions = pd.read_csv("../data/testQ.csv")
+questions = pd.read_csv("./testQ.csv")
 models = ["llama2", "nlp_langchain"]
 parsers = ["unstructured", "llamaparse", "pdfplumber"]
 
