@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://www.svgrepo.com/show/375425/dialogflow-cx.svg" align="center" width="35%">
+    <img src="https://www.svgrepo.com/show/375425/dialogflow-cx.svg" align="center" width="30%">
 </p>
 <p align="center"><h1 align="center">QA CAPSTONE</h1></p>
 <p align="center">
