@@ -14,6 +14,16 @@ load_dotenv()
 
 
 def process_data(data_path, method):
+    """
+    Load parsed data and process it into a list of Document objects.
+
+    Args:
+        data_path (str): The path to the directory containing the data.
+        method (str): The method to use for processing the data. One of "unstructured", "pdfplumber", "pypdfloader", or "llamaparse".
+
+    Returns:
+        A list of Document objects from llama package.
+    """
     data_dict = load_data(data_path=data_path, method=method)
     split_documents = []
     if method == 'unstructured':
@@ -43,33 +53,46 @@ def process_data(data_path, method):
 
 
 def load_data(data_path, method):
+    """
+    Load parsed data from a given directory, or parse new data and update pickle file if necessary.
+
+    Args:
+        data_path (str): The path to the directory containing the data.
+        method (str): The method to use for parsing the data. One of "unstructured", "pdfplumber", "pypdfloader", or "llamaparse".
+
+    Returns:
+        A dictionary of parsed documents.
+    """
     parsed_data = {}
     data_file = data_path + f"/pkl/{method}.pkl"
     if os.path.exists(data_file):
         with open(data_file, "rb") as f:
             parsed_data = pickle.load(f)
     pdf_path = data_path + "/pdf"
-    pdfs = [file for file in os.listdir(pdf_path) if file.endswith('pdf')]
-    parser = PDFParser()
-    for pdf_name in pdfs:
-        if pdf_name in parsed_data:
-            continue
-        else:
-            print(f"Parsing new document: {pdf_name}")
-            full_path = os.path.join(pdf_path, pdf_name)
-            document = parser.load_data(full_path, method)
-            parsed_data[pdf_name] = document
-    with open(data_file, 'wb') as f:
-        pickle.dump(parsed_data, f)
+    pdfs = [file for file in os.listdir(pdf_path) if file.endswith('pdf') and file not in parsed_data]
+    if len(pdfs) > 0:
+        parser = PDFParser()
+        for pdf_name in pdfs:
+            if pdf_name in parsed_data:
+                continue
+            else:
+                print(f"Parsing new document: {pdf_name}")
+                full_path = os.path.join(pdf_path, pdf_name)
+                document = parser.load_data(full_path, method)
+                parsed_data[pdf_name] = document
+        with open(data_file, 'wb') as f:
+            pickle.dump(parsed_data, f)
     return parsed_data
 
 
 class PDFParser(object):
-    '''
-    PDF parser for single pdf file
-    '''
-
     def __init__(self, api_key=None):
+        """
+        Initialize a PDFParser object.
+
+        Args:
+            api_key (str, optional): The Llama Cloud API key to use. If not provided, the API key will be loaded from the environment variable LLAMA_CLOUD_API_KEY.
+        """
         self.api_key = api_key or os.getenv("LLAMA_CLOUD_API_KEY")
 
     def extract_unstructured(self, file_path):
@@ -99,6 +122,19 @@ class PDFParser(object):
         return elements
 
     def load_data(self, file_path, method):
+        """
+        Load data from a PDF file using the specified method.
+
+        Args:
+            file_path (str): The path to the PDF file to be parsed.
+            method (str): The parsing method to use. Must be one of 'pdfplumber', 'pypdfloader', 'llamaparse', 'unstructured', or 'unstructuredLangchain'.
+
+        Returns:
+            The extracted data from the PDF file using the specified parsing method.
+
+        Raises:
+            ValueError: If the provided method is not recognized.
+        """
         if method == 'pdfplumber':
             return self.extract_pdfplumber(file_path)
         elif method == 'pypdfloader':
@@ -112,7 +148,8 @@ class PDFParser(object):
         else:
             raise ValueError(f"Unknown parsing method: {method}")
 
-def guide(x):
+def guide(user_input):
+    '''Transform the raw user input to a guided input that contains clearer instructions for the model'''
     return f"""
         Objective:
         I will provide you with a task or description. Your job is to create a single, well-structured, actionable prompt that effectively guides another LLM to perform the task.
@@ -164,5 +201,5 @@ def guide(x):
         When I give you a task, respond only with the final engineered prompt. Do not include any explanations or additional steps—just the prompt.
 
 
-        <Prompt: {x}>
+        <Prompt: {user_input}>
     """

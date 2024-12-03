@@ -13,9 +13,23 @@ load_dotenv()
 
 
 class Llama2_General:
-    def __init__(self, verbose=True):
+    def __init__(self, parser=None, data_path=None, verbose=True):
+        """
+        Generalized Llama2 class for answering questions. No need for input data.
+
+        Args:
+            parser (str, optional): The name of the PDF parser to use. If provided, must be one of "unstructured", or "pdfplumber", "pdfloader", or "llamaparse". Defaults to None.
+            data_path (str, optional): The path from the current file's directory to the data directory. Defaults to None.
+            verbose (bool, optional): If True, print out logging messages. Defaults to True.
+        """
         self.verbose = verbose
         self.memory = []  # Memory to store conversation history
+        if data_path and parser:
+            if self.verbose:
+                logger.info("Loading/Parsing documents...")
+            self.documents = process_data(data_path=data_path, method=parser)
+        else:
+            self.documents = None  # Allow initialization without data
         # Always initialize the embedding and LLM models
         if self.verbose:
             logger.info("Initializing embedding and Llama2 model...")
@@ -25,6 +39,13 @@ class Llama2_General:
         self.query_engine = None  # Only set when train() is called
 
     def train(self):
+        """
+        Train the generalized Llama2 model, input data is required.
+
+        This method initializes the Llama2 model by setting its embedding model
+        and llm. It also creates a VectorStoreIndex from the parsed documents,
+        and sets the query engine to the index.
+        """
         if not self.documents:
             raise ValueError(
                 "No documents to train on. Provide data_path and parser.")
@@ -35,9 +56,28 @@ class Llama2_General:
         self.query_engine = index.as_query_engine()
 
     def embed(self, query):
+        """
+        Perform work embedding for the given query.
+
+        Args:
+            query (str): The text input to be embedded.
+
+        Returns:
+            numpy.ndarray: The vector representation of the query.
+        """
         return self.embed_model._embed(query)
 
     def answer(self, query):
+        """
+        Generate an answer to the given query.
+
+        Args:
+            query (str): The text input to be answered.
+
+        Returns:
+            tuple: A tuple of the response and the similarity score of the
+            response to the query.
+        """
         # Incorporate memory into the prompt
         if self.memory:
             memory_context = "\n".join(

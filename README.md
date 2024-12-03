@@ -83,11 +83,11 @@ QACapstone.git is a project that streamlines document parsing and query response
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/mruizrod/QACapstone.git/blob/master/src/nlp_langchain.py'>nlp_langchain.py</a></b></td>
-				<td>- Defines the nlp_langchain class, an NLP-based text extractor module for document parsing, embedding, and query response generation<br>- Unlike LLM, this approach directly return the extracted text from the document as its response<br>- Allows for much more efficient query respond generation</td>
+				<td>- Defines the NLP_langchain class, an NLP-based text extractor module for document parsing, embedding, and query response generation<br>- Unlike LLM, this approach directly return the extracted text from the document as its response<br>- Allows for much more efficient query respond generation</td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/mruizrod/QACapstone.git/blob/master/src/nlp_base.py'>nlp_base.py</a></b></td>
-				<td>- Contains the naive version of nlp_langcain, currently unused</td>
+				<td>- Contains the naive version of NLP_langcain, currently unused</td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/mruizrod/QACapstone.git/blob/master/src/llama2.py'>llama2.py</a></b></td>
@@ -134,6 +134,13 @@ QACapstone.git is a project that streamlines document parsing and query response
 
 
 ###  Usage
+Create a `.env` file in the root directory of the project and populate it with your API key. The file should look like this:
+```
+LLAMA_CLOUD_API_KEY=...
+OPENAI_API_KEY=...
+```
+Make sure Ollama is running on your device.
+
 Run QACapstone.git using the following command:
 **Using `streamlit`** &nbsp; 
 ```sh

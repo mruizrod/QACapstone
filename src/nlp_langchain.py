@@ -13,14 +13,17 @@ load_dotenv()
 
 
 class NLP_langchain(object):
-    def __init__(
-        self,
-        parser=None,
-        data_path=None,
-        chunk_size=200,  # TODO: to be tuned
-        chunk_overlap=20,  # TODO: to be tuned
-        verbose=True
-    ):
+    def __init__(self, parser, data_path, chunk_size=200, chunk_overlap=20, verbose=True):
+        """
+        NLP_langchain class for answering questions.
+
+        Args:
+            parser (str): The name of the PDF parser to use, one of "unstructured", or "pdfplumber", "pdfloader", or "llamaparse".
+            data_path (str): The path from the current file's directory to the data directory.
+            chunk_size (int, optional): The chunk size for splitting the text in Langchain. Defaults to 200.
+            chunk_overlap (int, optional): The overlap between chunks for splitting the text in Langchain. Defaults to 20.
+            verbose (bool, optional): If True, print out logging messages. Defaults to True.
+        """
         self.verbose = verbose
         if self.verbose:
             logger.info("Loading/Parsing documents...")
@@ -34,6 +37,12 @@ class NLP_langchain(object):
         self.documents = text_splitter.create_documents(document_texts)
 
     def train(self):
+        """
+        Train the NLP Langchain model.
+
+        This method performs embedding on the parsed documents and sets the
+        document embeddings attribute.
+        """
         if self.verbose:
             logger.info("Performing embedding...")
         self.embed_model = HuggingFaceEmbedding(
@@ -42,9 +51,29 @@ class NLP_langchain(object):
             doc.page_content) for doc in self.documents]
 
     def embed(self, query):
+        """
+        Perform work embedding for the given query.
+
+        Args:
+            query (str): The text input to be embedded.
+
+        Returns:
+            numpy.ndarray: The vector representation of the query.
+        """
         return self.embed_model._embed(query)
 
     def answer(self, query, n_context=2):
+        """
+        Generate an answer to the given query.
+
+        Args:
+            query (str): The text input to be answered.
+            n_context (int, optional): The number of context documents to include in the response. Defaults to 2.
+
+        Returns:
+            tuple: A tuple of the response and the similarity score of the
+            response to the query.
+        """
         if self.verbose:
             logger.info("Generating response...")
         query_embedding = self.embed_model._embed(query)
@@ -58,4 +87,3 @@ class NLP_langchain(object):
                 selected_docs.append(self.documents[idx].page_content)
         response, score = "\n\n".join(selected_docs), similarities[best_idx]
         return response, score
-    
