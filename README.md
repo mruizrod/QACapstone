@@ -122,7 +122,7 @@ QACapstone.git is a project that streamlines document parsing and query response
 
 2. Navigate to the project directory:
 	```sh
-	cd QACapstone.git
+	cd QACapstone
 	```
 
 3. Install the project dependencies:
@@ -141,7 +141,7 @@ OPENAI_API_KEY=...
 ```
 Make sure Ollama is running on your device.
 
-Run QACapstone.git using the following command:
+Run QACapstone using the following command:
 **Using `streamlit`** &nbsp; 
 ```sh
 streamlit run main.py
