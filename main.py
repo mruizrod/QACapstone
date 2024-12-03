@@ -74,5 +74,6 @@ if st.session_state.history:
         st.markdown("---")
 
 
-# What is the anticipated rate at end-2024 according to the FED?
 # What is the key takeaway of Goldman’s mid-year outlook 2024?
+# How much did the price fall as China turned to Brazilian farmers?
+# What is the anticipated rate at end-2024 according to the FED?
