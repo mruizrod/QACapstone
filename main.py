@@ -56,7 +56,7 @@ if st.button("Submit") and user_input:
         logger.info("Performing prompt engineering...")
     guided_input = guide(user_input)
     engineered_input, _ = Llama2_General(verbose=False).answer(guided_input)
-    response, score = pipeline.answer(user_input)
+    response, score = pipeline.answer(engineered_input)
     dt = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
     st.session_state.history.append({
         "parser": parser, "model": model,
@@ -74,5 +74,6 @@ if st.session_state.history:
         st.markdown("---")
 
 
-# What is the anticipated rate at end-2024 according to the FED?
 # What is the key takeaway of Goldman’s mid-year outlook 2024?
+# How much did the price fall as China turned to Brazilian farmers?
+# What is the anticipated rate at end-2024 according to the FED?
